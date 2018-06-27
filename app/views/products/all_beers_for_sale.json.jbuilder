@@ -1,1 +1,1 @@
-json.beers @beers
+json.All_beer @beers
