@@ -20,4 +20,10 @@ class ProductsController < ApplicationController
     render "red_ale_beer_for_sale.json.jbuilder"
   end
 
+  def all_products_model
+    output = params["id"]
+    @beer = Product.find_by(id: output)
+    render "all_products.json.jbuilder"
+  end
+
 end
