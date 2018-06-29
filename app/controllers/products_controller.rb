@@ -32,4 +32,10 @@ class ProductsController < ApplicationController
     render "show.json.jbuilder"
   end
 
+  def destroy
+    @beer = Product.find_by(id: params[:id])
+    @beer.destroy
+    render json: {message: "This beer is no longer available"}
+  end
+
 end
