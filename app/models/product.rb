@@ -4,7 +4,7 @@ class Product < ApplicationRecord
     if price < 2
       return true
     else 
-      false
+      return false
     end
   end
 
