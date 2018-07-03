@@ -12,8 +12,11 @@ class ProductsController < ApplicationController
       image_url: params["image_url"],
       description: params["description"]
       )
-    @beer.save
-    render "show.json.jbuilder"
+    if @beer.save
+      render "show.json.jbuilder"
+    else
+      render json: {error: @beer.errors.full_messages}, status: 416
+    end
   end
 
   def show
@@ -28,8 +31,12 @@ class ProductsController < ApplicationController
     @beer.price = params[:price] || @beer.price
     @beer.image_url = params[:image_url] || @beer.image_url
     @beer.description = params[:description] || @beer.description
-    @beer.save
-    render "show.json.jbuilder"
+    
+    if @beer.save
+      render "show.json.jbuilder"
+    else
+      render json: {error: @beer.errors.full_messages}, status: 416
+    end
   end
 
   def destroy
