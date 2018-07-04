@@ -2,7 +2,14 @@ class ProductsController < ApplicationController
   
   def index
     @beers = Product.all
+
+    search = params[:a]
+    if search
+      @beers = @beers.where("name ILIKE ? OR description ILIKE ?", "%#{search}%", "%#{search}%")
+    end
+
     render "index.json.jbuilder"
+    @beers = @beers.order(:id)
   end
 
   def create
