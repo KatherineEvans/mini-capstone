@@ -5,4 +5,3 @@ json.All_suppliers @suppliers.each do |supplier|
   json.phone supplier.phone_number
   json.products_info supplier.products_info
 end
-# json.Supplier_products @suppliers.products_info
