@@ -9,7 +9,13 @@ class ProductsController < ApplicationController
     end
 
     render "index.json.jbuilder"
-    @beers = @beers.order(:id)
+
+    order_by_price = params[:b]
+    if order_by_price == "price_list"
+      @beers = @beers.order(:price => :desc)
+    else
+      @beers = @beers.order(:id)
+    end
   end
 
   def create

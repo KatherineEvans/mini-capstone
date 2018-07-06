@@ -21,4 +21,9 @@ class Product < ApplicationRecord
     return price + tax
   end
 
+  def supplier_info
+    Supplier.find_by(id: supplier_id)
+    #has many/belongs to relationship
+  end
+
 end
