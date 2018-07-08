@@ -26,4 +26,12 @@ class Product < ApplicationRecord
     #has many/belongs to relationship
   end
 
+  def photo_info
+    Photo.where(product_id: id)
+  end
+    
+  def photo_url
+    photo_info.map { |e| e["url"] }
+  end
+
 end
