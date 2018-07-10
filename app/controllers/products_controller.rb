@@ -22,7 +22,8 @@ class ProductsController < ApplicationController
     @beer = Product.new(
       name: params["name"],
       price: params["price"],
-      description: params["description"]
+      description: params["description"],
+      supplier_id: params["supplier_id"]
       )
     if @beer.save
       render "show.json.jbuilder"
