@@ -1,7 +1,10 @@
 class OrdersController < ApplicationController
 
   def index
-    render "index.json.jbuilder"
+    if current_user
+      @orders = Order.where(user_id: current_user.id)
+      render "index.json.jbuilder"
+    end
   end
 
   def create
@@ -16,7 +19,7 @@ class OrdersController < ApplicationController
       )
 
     if @order.save
-      render json: {message: "Saved"}
+      render json: {message: "Order Saved"}
     else 
       render json: {message: "YOU SUCK"}
     end
