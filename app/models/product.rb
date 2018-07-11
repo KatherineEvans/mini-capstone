@@ -6,7 +6,7 @@ class Product < ApplicationRecord
   validates :description, length: { in: 10..500}
   validates :supplier_id, presence: true
 
-  belongs_to :orders
+  has_many :orders
 
   def is_discounted
     if price < 2

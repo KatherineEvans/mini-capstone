@@ -1,14 +1,13 @@
 class ProductsController < ApplicationController
-  
+  before_action :authenticate_admin, except: [:index, :show]
+
   def index
     @beers = Product.all
-
     search = params[:a]
+    
     if search
       @beers = @beers.where("name ILIKE ? OR description ILIKE ?", "%#{search}%", "%#{search}%")
     end
-
-    render "index.json.jbuilder"
 
     order_by_price = params[:b]
     if order_by_price == "price_list"
@@ -16,6 +15,8 @@ class ProductsController < ApplicationController
     else
       @beers = @beers.order(:id)
     end
+
+    render "index.json.jbuilder"
   end
 
   def create
