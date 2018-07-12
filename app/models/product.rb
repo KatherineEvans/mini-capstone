@@ -8,6 +8,8 @@ class Product < ApplicationRecord
 
   has_many :orders
   has_many :type_products
+  has_many :types, through: :type_products
+
 
   def is_discounted
     if price < 2
