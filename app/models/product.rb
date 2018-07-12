@@ -7,6 +7,7 @@ class Product < ApplicationRecord
   validates :supplier_id, presence: true
 
   has_many :orders
+  has_many :type_products
 
   def is_discounted
     if price < 2
