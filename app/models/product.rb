@@ -9,6 +9,9 @@ class Product < ApplicationRecord
   has_many :orders
   has_many :type_products
   has_many :types, through: :type_products
+  has_many :carted_products
+  has_many :orders, through: :carted_products
+  has_many :users, through: :carted_products
 
 
   def is_discounted
