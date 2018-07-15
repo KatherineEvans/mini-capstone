@@ -7,14 +7,21 @@ class OrdersController < ApplicationController
   end
 
   def create
-    @beer = Product.find_by(id: params[:product_id])
+    @carted_products = CartedProduct.where(status: "carted")
+    @subtotal = 0
+
+    @carted_products.each do |dex|
+      @subtotal += (dex.product.price * dex.quantity)
+    end
+
+    @tax = @subtotal * 0.09
+    @total = @subtotal + @tax
+
     @order = Order.new(
       user_id: current_user.id,
-      product_id: params["product_id"],
-      quantity: params["quantity"],
-      subtotal: @beer.price * params["quantity"].to_i,
-      tax: @beer.tax * params["quantity"].to_i,
-      total: @beer.total * params["quantity"].to_i
+      subtotal: @subtotal,
+      tax: @tax,
+      total: @total
       )
 
     if @order.save

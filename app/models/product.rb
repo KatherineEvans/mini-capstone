@@ -6,7 +6,6 @@ class Product < ApplicationRecord
   validates :description, length: { in: 10..500}
   validates :supplier_id, presence: true
 
-  has_many :orders
   has_many :type_products
   has_many :types, through: :type_products
   has_many :carted_products

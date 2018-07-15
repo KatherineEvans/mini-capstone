@@ -1,10 +1,16 @@
 class CartedProductsController < ApplicationController
 
+  def index
+    @carted_products = current_user.carted_products
+    render json: {message: "Yay!"}
+  end
+
   def create
     @carted_product = CartedProduct.new(
       product_id: params["product_id"],
       quantity: params["quantity"],
-      user_id: current_user.id 
+      user_id: current_user.id,
+      status: "carted"
     )
     if @carted_product.save
       render json: {message: "Your order saved!"}, status: :created
