@@ -1,0 +1,7 @@
+<h1>Beer!</h1>
+<h2>Name: <%= @beer.name %></h2>
+<img src=" <%= @beer.photos.first.url %>" alt="" width=300>
+<h3>Supplier: <%= @beer.supplier.name %></h3>
+<h4>Price: $<%= @beer.price %>0</h2>
+<p>Description: <%= @beer.description %></p>
+<a href="/beers">Back to all Beers</a>

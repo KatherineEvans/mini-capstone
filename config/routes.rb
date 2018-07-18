@@ -1,30 +1,34 @@
 Rails.application.routes.draw do
   get "/beers" => "products#index"
-  post "/beers" => "products#create"
   get "/beers/:id" => "products#show"
-  patch "/beers/:id" => "products#update"
-  delete "/beers/:id" => "products#destroy"
 
-  get "/suppliers" => "suppliers#index"
-  post "/suppliers" => "products#create"
-  get "/suppliers/:id" => "products#show"
-  patch "/suppliers/:id" => "products#update"
-  delete "/suppliers/:id" => "products#destroy"
+  namespace :api do
+    get "/beers" => "products#index"
+    post "/beers" => "products#create"
+    get "/beers/:id" => "products#show"
+    patch "/beers/:id" => "products#update"
+    delete "/beers/:id" => "products#destroy"
 
-  get "/photos" => "photos#index"
-  post "/photos" => "photos#create"
-  get "/photos/:id" => "photos#show"
-  patch "/photos/:id" => "photos#update"
-  delete "/photos/:id" => "photos#destroy"
+    get "/suppliers" => "suppliers#index"
+    post "/suppliers" => "products#create"
+    get "/suppliers/:id" => "products#show"
+    patch "/suppliers/:id" => "products#update"
+    delete "/suppliers/:id" => "products#destroy"
 
-  post "/users" => "users#create"
+    get "/photos" => "photos#index"
+    post "/photos" => "photos#create"
+    get "/photos/:id" => "photos#show"
+    patch "/photos/:id" => "photos#update"
+    delete "/photos/:id" => "photos#destroy"
 
-  post "/sessions" => "sessions#create"
+    post "/users" => "users#create"
 
-  get "/orders" => "orders#index"
-  post "/orders" => "orders#create"
+    post "/sessions" => "sessions#create"
 
-  get "/carted_products" => "carted_products#index"
-  post "/carted_products" => "carted_products#create"
-  
+    get "/orders" => "orders#index"
+    post "/orders" => "orders#create"
+
+    get "/carted_products" => "carted_products#index"
+    post "/carted_products" => "carted_products#create"
+  end
 end

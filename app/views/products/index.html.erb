@@ -1,0 +1,9 @@
+<h1>All Beers</h1>
+<% @beers.each do |beer| %>
+  <h2>Name: <%= beer.name %></h2>
+  <h3>Supplier: <%= beer.supplier.name %></h3>
+  <h4>Price: $<%= beer.price %>0</h4>
+  <img src="<%= beer.photos.first.url %>" alt="" width=300>
+  <p>Description: <%= beer.description %></p>
+  <a href="/beers/<%= beer.id %>">Read More</a>
+  <% end %>

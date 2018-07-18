@@ -1,4 +1,5 @@
 class Supplier < ApplicationRecord
+  has_many :products
 
   def products_info
     Product.where(supplier_id: id)

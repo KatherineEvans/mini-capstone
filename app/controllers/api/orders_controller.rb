@@ -1,4 +1,4 @@
-class OrdersController < ApplicationController
+class Api::OrdersController < ApplicationController
   before_action :authenticate_user
 
   def index
@@ -7,7 +7,7 @@ class OrdersController < ApplicationController
   end
 
   def create
-    @carted_products = CartedProduct.where(status: "carted")
+    @carted_products = CartedProduct.where(user_id: current_user.id, status: "carted")
     @subtotal = 0
 
     @carted_products.each do |dex|
@@ -23,10 +23,14 @@ class OrdersController < ApplicationController
       tax: @tax,
       total: @total
       )
+    @carted_products.each do |carted_product|
+      carted_product.status = "purchased"
+      carted_product.order_id = @order.id
+      carted_product.save
+    end
 
     if @order.save
       render json: {message: "Order Saved"}
-      
     else 
       render json: {message: "YOU SUCK"}
     end
