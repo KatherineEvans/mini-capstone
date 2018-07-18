@@ -16,4 +16,16 @@ class ProductsController < ApplicationController
     render "new.html.erb"
   end
 
+  def create
+    @beer = Product.new(
+      name: params["name"],
+      price: params["price"],
+      description: params["description"],
+      supplier_id: params["supplier_id"],
+      in_stock: params["in_stock"]
+      )
+    @beer.save
+    redirect_to "/beers"
+  end
+
 end

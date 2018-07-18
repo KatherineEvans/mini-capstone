@@ -1,6 +1,7 @@
 Rails.application.routes.draw do
   get "/beers" => "products#index"
   get "/beers/new" => "products#new"
+  post "/beers" => "products#create"
   get "/beers/:id" => "products#show"
 
   namespace :api do
