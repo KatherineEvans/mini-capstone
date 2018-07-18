@@ -24,7 +24,16 @@ class ProductsController < ApplicationController
       supplier_id: params["supplier_id"],
       in_stock: params["in_stock"]
       )
+    
     @beer.save
+
+    @photo = Photo.new(
+      url: params["url"],
+      product_id: @beer.id
+      )
+
+    @photo.save
+
     redirect_to "/beers"
   end
 
