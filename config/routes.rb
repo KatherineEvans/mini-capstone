@@ -5,6 +5,7 @@ Rails.application.routes.draw do
   get "/beers/:id" => "products#show"
   get "/beers/:id/edit" => "products#edit"
   patch "/beers/:id" => "products#update"
+  delete "/beers/:id" => "products#destroy"
 
   namespace :api do
     get "/beers" => "products#index"
