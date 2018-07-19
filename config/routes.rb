@@ -3,6 +3,8 @@ Rails.application.routes.draw do
   get "/beers/new" => "products#new"
   post "/beers" => "products#create"
   get "/beers/:id" => "products#show"
+  get "/beers/:id/edit" => "products#edit"
+  patch "/beers/:id" => "products#update"
 
   namespace :api do
     get "/beers" => "products#index"

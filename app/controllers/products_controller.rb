@@ -24,7 +24,7 @@ class ProductsController < ApplicationController
       supplier_id: params["supplier_id"],
       in_stock: params["in_stock"]
       )
-    
+
     @beer.save
 
     @photo = Photo.new(
@@ -34,7 +34,22 @@ class ProductsController < ApplicationController
 
     @photo.save
 
-    redirect_to "/beers"
+    redirect_to "/beers/#{@beer.id}"
+  end
+
+  def edit
+    @beer = Product.find_by(id: params[:id])
+    render "edit.html.erb"
+  end
+
+  def update
+    @beer = Product.find_by(id: params[:id])
+    @beer.name = params[:name] 
+    @beer.price = params[:price]
+    @beer.description = params[:description]
+    @beer.supplier_id = params[:supplier_id]
+    @beer.save
+    redirect_to "/beers/#{@beer.id}"
   end
 
 end
