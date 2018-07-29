@@ -1,0 +1,16 @@
+body, html {
+    height: 100%;
+}
+
+.bg { 
+    /* The image used */
+    background-image: url("https://res.cloudinary.com/twenty20/private_images/t_watermark-criss-cross-10/v1463029725000/photosp/3a9d84db-96c3-4170-a9f9-c7b936ff5b25/stock-photo-california-equipment-kettle-manufacturing-beer-job-making-brewing-boiling-3a9d84db-96c3-4170-a9f9-c7b936ff5b25.jpg");
+
+    /* Full height */
+    height: 100%; 
+
+    /* Center and scale the image nicely */
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+}
